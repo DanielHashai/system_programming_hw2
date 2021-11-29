@@ -2,12 +2,13 @@
 #include "my_mat.h"
 
 int main() {
-    int graph[N][N] = {0};
+    int graph[N][N] = {{0}};
     int loopEnable = 1;
+	int i, j;
 
     // init graph
-    for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
+    for (i = 0; i < N; i++) {
+      for (j = 0; j < N; j++) {
 	  graph[i][j] = INF;
       }
     }
