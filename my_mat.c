@@ -1,41 +1,71 @@
 #include <stdio.h>
 #include "my_mat.h"
 
-int main() {
-    int graph[N][N] = {0};
-    int loopEnable = 1;
-
-    // init graph
+void printGraph(int graph[][N], int column) {
+    if (DEBUG == 0) return;
+    printf("graph vertix %d\n", column);
     for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
-	  graph[i][j] = INF;
+	for (int j = 0; j < N; j++) {
+	    if (graph[i][j] == INF)
+		printf("%20s", "INF");
+    	    else
+		printf("%20d", graph[i][j]);
+    	}
+    	printf("\n");
+    }
+}
+
+// Implementing floyd warshall algorithm
+void floydWarshall(int graph[][N]) {
+  int i, j, k;
+
+  for (i = 0; i < N; i++)
+    for (j = 0; j < N; j++)
+      graph[i][j] = graph[i][j];
+
+  // Adding vertices individually
+  for (k = 0; k < N; k++) {
+    for (i = 0; i < N; i++) {
+      for (j = 0; j < N; j++) {
+	if (i == j) continue;
+        if (graph[i][k] + graph[k][j] < graph[i][j])
+          graph[i][j] = graph[i][k] + graph[k][j];
       }
     }
+  }
+}
 
-    // start main loop
-    while (loopEnable) {
-	char cmd;
-
-	// await for command from user
-	scanf("%s", &cmd);
-
-	// perform command
-	switch (cmd) {
-	    case 'A':
-		doA_updateGraph(graph);	
-		floydWarshall(graph);
-		printGraph(graph, N);
-		break;
-	    case 'B':
-		printf("%s\n", doB_pathExists(graph));
-		break;
-	    case 'C':
-		printf("%d\n", doC_shortestPath(graph));
-		break;
-	    default: // exit main for D
-		loopEnable = 0;
+void doA_updateGraph(int graph[][N]) {
+    for (int i = 0; i < N; i++) {
+	for (int j = 0; j < N; j++) {
+	    int weight = INF;
+	    scanf("%d", &weight);
+	    graph[i][j] = (weight == 0) ? INF : weight;
 	}
     }
+}
 
-    return 0;
+const char* doB_pathExists(int graph[][N]) {
+    int i, j;
+
+    scanf("%d", &i);
+    scanf("%d", &j);
+
+    if (graph[i][j] != INF) 
+	return "True";
+    else 
+	return "False";
+}
+
+int doC_shortestPath(int graph[][N]) {
+    int i, j;
+
+    scanf("%d", &i);
+    scanf("%d", &j);
+
+    if (graph[i][j] != INF) 
+	return graph[i][j];
+    else 
+	return -1;
+
 }
