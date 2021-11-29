@@ -2,10 +2,11 @@
 #include "my_mat.h"
 
 void printGraph(int graph[][N], int column) {
+	int i, j;
     if (DEBUG == 0) return;
     printf("graph vertix %d\n", column);
-    for (int i = 0; i < N; i++) {
-	for (int j = 0; j < N; j++) {
+    for (i = 0; i < N; i++) {
+	for (j = 0; j < N; j++) {
 	    if (graph[i][j] == INF)
 		printf("%20s", "INF");
     	    else
@@ -36,8 +37,9 @@ void floydWarshall(int graph[][N]) {
 }
 
 void doA_updateGraph(int graph[][N]) {
-    for (int i = 0; i < N; i++) {
-	for (int j = 0; j < N; j++) {
+	int i,j; 
+    for (i = 0; i < N; i++) {
+	for (j = 0; j < N; j++) {
 	    int weight = INF;
 	    scanf("%d", &weight);
 	    graph[i][j] = (weight == 0) ? INF : weight;
