@@ -28,13 +28,14 @@ int main() {
 		printGraph(graph, N);
 		break;
 	    case 'B':
-		printf("%s\n", doB_pathExists(graph));
+		printf("%s", doB_pathExists(graph));
 		break;
 	    case 'C':
-		printf("%d\n", doC_shortestPath(graph));
+		printf("%d", doC_shortestPath(graph));
 		break;
 	    default: // exit main for D
 		loopEnable = 0;
+	    printf("\n");
 	}
     }
 
