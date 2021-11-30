@@ -35,6 +35,7 @@ int main() {
 		printf("%d\n", doC_shortestPath(graph));
 		break;
 	    default: // exit main for D
+		printf("\n");
 		loopEnable = 0;
 	}
     }
