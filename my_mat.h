@@ -12,6 +12,6 @@ void floydWarshall(int graph[][N]);
 
 void doA_updateGraph(int graph[][N]);
 
-const char* doB_pathExists(int graph[][N]);
+char* doB_pathExists(int graph[][N]);
 
 int doC_shortestPath(int graph[][N]);

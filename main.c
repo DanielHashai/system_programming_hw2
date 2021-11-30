@@ -2,14 +2,13 @@
 #include "my_mat.h"
 
 int main() {
-    int graph[N][N] = {{0}};
+    int graph[N][N] = {0};
     int loopEnable = 1;
-	int i, j;
-	static int first_print_done = 0;
+    boolean first_print_done = False;
 
     // init graph
-    for (i = 0; i < N; i++) {
-      for (j = 0; j < N; j++) {
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
 	  graph[i][j] = INF;
       }
     }
@@ -29,25 +28,22 @@ int main() {
 		printGraph(graph, N);
 		break;
 	    case 'B':
-		if (first_print_done == 1) {
-		    printf("\n");
-		}
+		if (first_print_done)
+			printf("\n");
 		printf("%s", doB_pathExists(graph));
-		first_print_done = 1;
+		first_print_done = True;		
 		break;
 	    case 'C':
-		if (first_print_done == 1) {
-		    printf("\n");
-		}
+		if (first_print_done)
+			printf("\n");
 		printf("%d", doC_shortestPath(graph));
-		first_print_done = 1;
+		first_print_done = True;
 		break;
 	    default: // exit main for D
 		loopEnable = 0;
 	}
-
-	printf("\n");
     }
 
     return 0;
 }
+
