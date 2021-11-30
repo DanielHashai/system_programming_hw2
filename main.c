@@ -4,7 +4,6 @@
 int main() {
     int graph[N][N] = {0};
     int loopEnable = 1;
-    boolean first_print_done = False;
     int i,j;
 
 
@@ -30,16 +29,10 @@ int main() {
 		printGraph(graph, N);
 		break;
 	    case 'B':
-		if (first_print_done)
-			printf("\n");
-		printf("%s", doB_pathExists(graph));
-		first_print_done = True;		
+		printf("%s\n", doB_pathExists(graph));
 		break;
 	    case 'C':
-		if (first_print_done)
-			printf("\n");
-		printf("%d", doC_shortestPath(graph));
-		first_print_done = True;
+		printf("%d\n", doC_shortestPath(graph));
 		break;
 	    default: // exit main for D
 		loopEnable = 0;
