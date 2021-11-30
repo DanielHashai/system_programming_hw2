@@ -6,6 +6,7 @@ int main() {
     int loopEnable = 1;
     boolean first_print_done = False;
 
+
     // init graph
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
